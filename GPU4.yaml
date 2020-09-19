@@ -1,0 +1,40 @@
+#Below sample yaml is used to schedule 4 GPU pods
+apiVersion: v1
+kind: Pod
+metadata:
+ name: sfr-pod-yuewang-vdbert
+ namespace: sfr-ns-yuewang
+spec:
+  restartPolicy: OnFailure
+  volumes:
+    - name: sfr-home-pv-yuewang
+      persistentVolumeClaim:
+        claimName: sfr-home-pvc-yuewang
+    - name: sfr-share-pv-yuewang
+      persistentVolumeClaim:
+        claimName: sfr-share-pvc-yuewang
+    - name: dshm
+      emptyDir:
+        medium: Memory
+  containers:
+    - name: vlp4
+      image: gcr.io/salesforce-research-internal/yuewang-vlp-new
+      command: ["sleep", "infinity"]
+      resources:
+        limits:
+          nvidia.com/gpu: 4
+          cpu: "31"
+          memory: 192G
+      volumeMounts:
+        - name: sfr-home-pv-yuewang
+          mountPath: "/export/home"
+        - name: sfr-share-pv-yuewang
+          mountPath: "/export/share"
+        - mountPath: "/dev/shm"
+          name: dshm
+
+  tolerations:
+  - key: "gpu_num"
+    operator: "Equal"
+    value: "8"
+    effect: "NoSchedule"
