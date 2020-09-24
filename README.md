@@ -9,7 +9,7 @@ Without the need of pretraining on external vision-language data, our model yiel
 visual dialog [leaderboard](https://evalai.cloudcv.org/web/challenges/challenge-page/161/leaderboard/483#leaderboardrank-1).
 
 **Framework illustration**\
-![VD-BERT framework](img/model_caption.png)
+![VD-BERT framework](model_caption.png)
 
 
 ## Installation
