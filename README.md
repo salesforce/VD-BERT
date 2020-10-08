@@ -32,7 +32,7 @@ We provide the running script on ``data/visual_extract_code.py``, which should b
 
 ``data``: VisDial json data and image visual features (size: 38G)
 
-``checkpoints/saved_models``: pretrained models and finetuned models for discriminative setting and generative setting, and optimized on the dense annotation.
+``model``: You can download a pretrained model from https://storage.cloud.google.com/sfr-vd-bert-research/v1.0_from_BERT_e30.bin
 
 ## Running experiments
 Below the running example scripts for pretraining, finetuning (including dense annotation), and testing.
